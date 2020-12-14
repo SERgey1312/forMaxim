@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <th:block th:insert="head_default.html"></th:block>
+    <title>Students</title>
+</head>
+<header th:replace="header_admin.html :: header"></header>
+<body>
+<th:block th:insert="bootstrapjs.html"></th:block>
+<div style="margin: 15px">
+    <form action="#" th:action="@{/students/add}" th:object="${student}" method="POST">
+        <div style="width: 80%; margin: 0 auto; text-align: center">
+            <a style="font-size:25px; font-weight: bold"> Добавте нового ученика</a><br><br><br>
+            <input type="text" name="name" placeholder="Введите имя" > <br><br><br>
+            <input type="text" name="age" placeholder="Введите возраст"><br><br><br>
+            <input type="text" name="address" placeholder="Введите адрес"><br><br><br>
+            <input type="text" name="classname" placeholder="Введите класс"><br>
+            <button type="submit">Сохранить</button>
+        </div>
+
+    </form>
+</div>
+</body>
+<footer th:replace="footer.html ::footer"></footer>
+</html>

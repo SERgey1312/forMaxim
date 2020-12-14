@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <th:block th:insert="head_default.html"></th:block>
+    <title>Students</title>
+</head>
+<header th:replace="header_admin.html :: header"></header>
+<body>
+<th:block th:insert="bootstrapjs.html"></th:block>
+<h1 style="text-align: center; margin: 0 auto">Таблица с учениками</h1>
+<table>
+    <thead>
+    <tr>
+        <td style="font-weight: bold; border: none;">Имя</td>
+        <td style="font-weight: bold; border: none;">Адрес</td>
+        <td style="font-weight: bold; border: none;">Возраст</td>
+        <td style="font-weight: bold; border: none;">Класс</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${students}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.address}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.classname}"></td>
+        <td sec:authorize="hasAuthority('ADMIN')" ><a th:href="@{/students/{id}(id = ${user.id})}">Edit</a></td>
+        <td sec:authorize="hasAuthority('ADMIN')" ><a style="color: red; font-weight: bold" th:href="@{/students/delete/{id}(id = ${user.id})}">Delete</a> </td>
+       </tr>
+    </tbody>
+</table>
+<div style="width: 100%; text-align: center ">
+    <a sec:authorize="hasAuthority('ADMIN')"  th:href="@{/students/add}" style="text-align: center" >Добавить пользователя</a>
+</div>
+</body>
+<footer th:replace="footer.html ::footer"></footer>
+</html>

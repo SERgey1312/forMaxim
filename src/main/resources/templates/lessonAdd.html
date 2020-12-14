@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <th:block th:insert="head_default.html"></th:block>
+    <title>Students</title>
+</head>
+<header th:replace="header_admin.html :: header"></header>
+<body>
+<th:block th:insert="bootstrapjs.html"></th:block>
+<div style="margin: 15px">
+    <form action="#" th:action="@{/lessons/add}" th:object="${lesson}" method="POST">
+        <div style="width: 80%; margin: 0 auto; text-align: center">
+            <a style="font-size:25px; font-weight: bold"> Добавте новый предмет обучения</a><br><br><br>
+            <input type="text" name="name" placeholder="Введите название" style="width: 300px"> <br><br><br>
+            <input type="text" name="teachersNumber" placeholder="Введите количество учителей" style="width: 300px"><br><br>
+            <button type="submit">Сохранить</button>
+        </div>
+
+    </form>
+</div>
+</body>
+<footer th:replace="footer.html ::footer"></footer>
+</html>

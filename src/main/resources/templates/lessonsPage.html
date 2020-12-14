@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <th:block th:insert="head_default.html"></th:block>
+    <title>Предметы</title>
+</head>
+<header th:replace="header_admin.html :: header"></header>
+<body>
+<th:block th:insert="bootstrapjs.html"></th:block>
+<h1 style="text-align: center; margin: 0 auto">Таблица с предметами</h1>
+<table>
+    <thead>
+    <tr>
+        <td style="font-weight: bold; border: none;">id</td>
+        <td style="font-weight: bold; border: none;">Название</td>
+        <td style="font-weight: bold; border: none;">Количество учителей</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="l : ${lessons}">
+        <td th:text="${l.id}"></td>
+        <td th:text="${l.name}"></td>
+        <td th:text="${l.teachersNumber}"></td>
+    </tr>
+    </tbody>
+</table>
+<div style="width: 100%; text-align: center ">
+    <a sec:authorize="hasAuthority('ADMIN')"  th:href="@{/lessons/add}" style="text-align: center" >Добавить предмет</a>
+</div>
+</body>
+<footer th:replace="footer.html ::footer"></footer>
+</html>

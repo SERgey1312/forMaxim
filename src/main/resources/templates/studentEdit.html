@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="head_default.html"></th:block>
+    <title>Edit Student</title>
+</head>
+<header th:replace="header_admin.html :: header"></header>
+<body>
+<div style="margin: 15px">
+    <form action="#" th:action="@{/students}" th:object="${student}" method="POST">
+        <input type="hidden" name="id" th:value="${student.id}">
+        <input type="text" name="name" th:value="${student.name}">
+        <input type="text" name="age" th:value="${student.age}">
+        <input type="text" name="address" th:value="${student.address}">
+        <input type="text" name="classname" th:value="${student.classname}">
+
+        <button type="submit">save</button>
+    </form>
+</div>
+<th:block th:insert="bootstrapjs.html"></th:block>
+</body>
+<footer th:replace="footer.html ::footer"></footer>
+</html>
